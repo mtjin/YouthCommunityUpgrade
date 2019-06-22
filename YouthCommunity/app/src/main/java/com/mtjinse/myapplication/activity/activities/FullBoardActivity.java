@@ -65,7 +65,8 @@ public class FullBoardActivity extends AppCompatActivity {
     //value
     private String mBoardUid = "";
     private String mBoardName = "";
-    private String mRelativeImage = ""; // 상대방프로필사진
+    private String mRelativeImage = ""; // 글쓴이 프로필사진
+    private String mUploadImage = ""; //글쓴이가 업로드한사진
     int commentSum = 0;
     BoardMessage boardMessage;
     private ArrayList<Comment> mCommentArrayList;
@@ -151,12 +152,22 @@ public class FullBoardActivity extends AppCompatActivity {
                 recommend();
             }
         });
-        //사진클릭이벤트
+        //글쓴이 사진클릭이벤트
         mProfileCircleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), PhotoZoomInActivity.class);
                 intent.putExtra("photoView", mRelativeImage);
+                startActivity(intent);
+            }
+        });
+
+        //게시물사진클릭이벤트
+        mUploadImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PhotoZoomInActivity.class);
+                intent.putExtra("photoView", mUploadImage);
                 startActivity(intent);
             }
         });
@@ -184,6 +195,7 @@ public class FullBoardActivity extends AppCompatActivity {
                 if (boardMessage.getMessageImage().equals("basic")) {
                 } else {
                     Glide.with(getApplicationContext()).load(boardMessage.getMessageImage()).into(mUploadImageView);
+                    mUploadImage = boardMessage.getMessageImage();
                 }
                 mTitleTextView.setText(boardMessage.getTitle());
                 mNickNameTextView.setText(boardMessage.getNickName());

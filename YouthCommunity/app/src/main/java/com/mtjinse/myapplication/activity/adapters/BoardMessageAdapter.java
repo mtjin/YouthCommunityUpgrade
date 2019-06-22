@@ -102,6 +102,7 @@ public class BoardMessageAdapter extends RecyclerView.Adapter<BoardMessageAdapte
 
                 }
             });
+
         }else{
             Log.d(TAG, "onBindViewHolder model null");
         }

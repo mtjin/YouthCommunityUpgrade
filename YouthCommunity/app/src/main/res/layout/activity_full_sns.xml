@@ -230,6 +230,7 @@
                 android:hint="댓글입력(#닉네임 입력시 답글알림가능)"
                 android:maxLength="255"
                 android:autoLink="all"
+                android:textSize="12dp"
                 android:maxLines="10"
                 android:padding="5dp" />
 
