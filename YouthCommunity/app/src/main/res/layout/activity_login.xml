@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFFFF"
+    android:orientation="vertical"
+    tools:context=".activity.activities.LoginActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_app_title"/>
+
+    <EditText
+        android:id="@+id/login_pt_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/login_input"
+        android:hint="가입한 이메일"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/login_pt_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/login_input"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textSize="20dp" />
+
+    <CheckBox
+        android:layout_gravity="center"
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:text="로그인 정보 저장"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/login_pt_password" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:orientation="horizontal">
+    <Button
+        android:id="@+id/login_btn_login"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@color/textBlue"
+        android:text="로그인"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/login_btn_signup"
+        android:layout_marginLeft="5dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@color/textBlue"
+        android:text="계정생성"
+        android:textColor="@color/white" />
+</LinearLayout>
+<TextView
+    android:layout_marginTop="15dp"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:text="──────────   또는   ──────────"
+    android:layout_height="wrap_content" />
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/login_btn_google"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:onClick="onClick" />
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_btn_facebook"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+
+</LinearLayout>

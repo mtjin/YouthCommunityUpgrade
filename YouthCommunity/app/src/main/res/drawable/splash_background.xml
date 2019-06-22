@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 배경색 설정-->
+    <item android:drawable="@drawable/ic_splash"/>
+
+  <!--  &lt;!&ndash; 스플래시 로고 이미지 &ndash;&gt;
+    <item>
+        <bitmap android:src="@drawable/ic_appicon"
+            android:gravity="center" />
+    </item>-->
+
+
+
+
+</layer-list>

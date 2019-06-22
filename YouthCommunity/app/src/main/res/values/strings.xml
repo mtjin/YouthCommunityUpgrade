@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">YOUTH</string>
+    <string name="facebook_app_id">445554142685034</string>
+    <string name="fb_login_protocol_scheme">fb445554142685034</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--메인 프래그먼트 탭 이름-->
+    <string name="tab0_name">친구</string>
+    <string name="tab1_name">채팅</string>
+    <string name="tab2_name">게시판</string>
+    <string name="tab3_name">프로필</string>
+    <!--fcm_default_channel-->
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+
+</resources>

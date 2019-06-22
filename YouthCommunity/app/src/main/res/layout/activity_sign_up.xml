@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#FFFFFFFF"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.activities.SignUpActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_app_title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+     android:gravity="center"
+        android:text="회원가입"
+        android:textSize="30dp" />
+
+
+    <EditText
+        android:id="@+id/signup_pt_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/login_input"
+        android:hint="이메일"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/signup_pt_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/login_input"
+        android:hint="비밀번호"
+        android:maxLength="20"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/signup_pt_passconfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/login_input"
+        android:hint="비밀번호 확인"
+        android:maxLength="20"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textSize="20dp" />
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/signup_btn_signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/textBlue"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="회원가입"
+        android:textColor="@color/white" />
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/signup_btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/textBlue"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="취소"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

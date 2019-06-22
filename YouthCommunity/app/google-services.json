@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "808063837729",
+    "firebase_url": "https://youthcommunity-57ec9.firebaseio.com",
+    "project_id": "youthcommunity-57ec9",
+    "storage_bucket": "youthcommunity-57ec9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808063837729:android:47e9a4c70b2703d8",
+        "android_client_info": {
+          "package_name": "com.mtjinse.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808063837729-j358kmi7r8bddbv337du8kgn1762fsdk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mtjinse.myapplication",
+            "certificate_hash": "2594505716124fb73c0d9ca0633d9dd80b38d943"
+          }
+        },
+        {
+          "client_id": "808063837729-0dcumjn7f4o8r3goh1jletia739t0p74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoEXLhPXRarVQ-fDxJd24jcqiOSGJoyzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808063837729-0dcumjn7f4o8r3goh1jletia739t0p74.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

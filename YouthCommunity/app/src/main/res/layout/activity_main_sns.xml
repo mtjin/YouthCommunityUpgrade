@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".activity.activities.MainSNSActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+<!--
+            android:focusable="true"
+            android:focusableInTouchMode="true" EditText포커싱가는거 막는건데
+            원래 위에 리니어레이아웃에 있었으나 게시물을 맨위에걸 보여주는데 도움이되기때문에 그냥 없에줬다.-->
+
+            <EditText
+                android:id="@+id/mainsns_pt_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:hint="검색(두글자 이상)"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/mainsns_tv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:text="검색"
+                android:textColor="@color/orange"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/mainsns_swipe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mainsns_rev_mainboard"
+            android:layout_width="match_parent"
+            android:clipToPadding="false"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/mainsns_fab_bestboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="15sp"
+        android:layout_marginBottom="230dp"
+        android:backgroundTint="#FA7E7E"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="invisible"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/mainsns_fab_mylike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="160dp"
+        android:layout_marginRight="15sp"
+        android:src="@drawable/ic_like"
+        android:visibility="invisible"
+        android:backgroundTint="#FA7E7E"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/mainsns_fab_write"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="90dp"
+        android:layout_marginRight="15sp"
+        android:src="@android:drawable/ic_menu_edit"
+        android:visibility="invisible"
+        android:backgroundTint="#FA7E7E"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/mainsns_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="15sp"
+        android:src="@android:drawable/ic_input_add" />
+
+</android.support.design.widget.CoordinatorLayout>

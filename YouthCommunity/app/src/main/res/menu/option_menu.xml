@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/popup1"
+        android:title="문의 및 신고" />
+
+    <item
+        android:id="@+id/popup2"
+        android:title="로그아웃" />
+
+    <item
+        android:id="@+id/popup3"
+        android:title="채팅방 알림on/off" />
+
+
+</menu>

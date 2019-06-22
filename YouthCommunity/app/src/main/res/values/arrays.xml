@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="boards">
+        <item>일상SNS</item>
+        <item>자유게시판</item>
+        <item>자유게시판 (채팅방)</item>
+        <item>연애·심리</item>
+        <item>연애·심리 (채팅방)</item>
+        <item>이성친구</item>
+        <item>이성친구 (채팅방)</item>
+        <item>고민생각거리</item>
+        <item>고민생각거리 (채팅방)</item>
+        <item>웃긴게시판</item>
+        <item>웃긴게시판 (채팅방)</item>
+        <item>게임</item>
+        <item>게임 (채팅방)</item>
+        <item>운동·스포츠</item>
+        <item>운동·스포츠 (채팅방)</item>
+        <item>연예인·가수</item>
+        <item>연예인·가수 (채팅방)</item>
+        <item>카카오톡+친구하자~</item>
+        <item>카카오톡+친구하자~ (채팅방)</item>
+        <item>공부</item>
+        <item>공부 (채팅방)</item>
+        <item>음악</item>
+        <item>음악 (채팅방)</item>
+        <item>얼평</item>
+        <item>얼평 (채팅방)</item>
+        <item>19</item>
+        <item>19 (채팅방)</item>
+        <item>초등학생</item>
+        <item>초등학생 (채팅방)</item>
+        <item>중학생</item>
+        <item>중학생 (채팅방)</item>
+        <item>고등학생</item>
+        <item>고등학생 (채팅방)</item>
+        <item>성인</item>
+        <item>성인 (채팅방)</item>
+        <item>정치</item>
+        <item>정치 (채팅방)</item>
+        <item>학교일상</item>
+        <item>학교일상 (채팅방)</item>
+    </string-array>
+</resources>

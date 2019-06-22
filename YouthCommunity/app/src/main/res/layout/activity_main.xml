@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.activities.MainActivity">
+
+    <include
+        android:id="@+id/include4"
+        layout="@layout/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_linear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include4"></android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/main_linear"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/main_ibtn_first"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:padding="30dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_friends_list_black_24dp"
+
+            android:text="첫번째 탭" />
+
+        <ImageButton
+            android:id="@+id/main_ibtn_second"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingBottom="7dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_message_black_24dp"
+            android:text="두번째 탭" />
+
+        <ImageButton
+            android:id="@+id/main_ibtn_third"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@color/white"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_dashboard_black_24dp"
+            android:text="세번째 탭" />
+
+        <ImageButton
+            android:id="@+id/main_ibtn_fourth"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@color/white"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_profile_black_24dp"
+            android:text="네번째 탭" />
+    </LinearLayout>
+    <!-- <include
+         layout="@layout/tool_bar"
+         android:layout_height="66dp"
+         android:layout_marginBottom="8dp"
+         app:layout_constraintBottom_toTopOf="@+id/main_viewpager"
+         app:layout_constraintTop_toTopOf="parent" />
+
+     <android.support.v4.view.ViewPager
+         android:id="@+id/main_viewpager"
+         android:layout_width="match_parent"
+         android:layout_height="466dp"
+         app:layout_constraintBottom_toTopOf="@+id/main_linear"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="1.0"
+         app:layout_constraintStart_toStartOf="parent"></android.support.v4.view.ViewPager>
+
+     <LinearLayout
+         android:id="@+id/main_linear"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/main_viewpager">
+
+         <Button
+             android:id="@+id/main_btn_first"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:text="첫번째 탭" />
+
+         <Button
+             android:id="@+id/main_btn_second"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:text="두번째 탭" />
+
+         <Button
+             android:id="@+id/main_btn_third"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:text="세번째 탭" />
+
+         <Button
+             android:id="@+id/main_btn_fourth"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:text="네번째 탭" />
+     </LinearLayout>-->
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.fragments.Tab3Fragment">
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tab3_iv_photo"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/com_facebook_profile_picture_blank_square"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintVertical_bias="0.06999999" />
+
+    <EditText
+        android:id="@+id/tab3_pt_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/login_input"
+        android:hint="닉네임"
+        android:inputType="text"
+        android:maxLines="1"
+        android:maxLength="10"
+        android:padding="10dp"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/tab3_pt_introduce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/login_input"
+        android:hint="자기소개(100자 이내)"
+        android:lines="4"
+        android:autoLink="all"
+        android:maxLength="100"
+        android:maxLines="4"
+        android:padding="10dp"
+        android:textSize="15dp" />
+
+    <Spinner
+        android:id="@+id/tab3_sp_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_input"
+        android:autofillHints="나이를 선택해주세요"
+        android:layout_marginRight="30dp" />
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/tab3_btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/textBlue"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="확인"
+        android:textColor="@color/white" />
+</LinearLayout>

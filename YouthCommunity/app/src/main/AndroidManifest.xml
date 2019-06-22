@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mtjinse.myapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/NoActionBar">
+        <activity android:name=".activity.activities.OpenChatRoomActivity"></activity>
+        <activity
+            android:name=".activity.activities.SplashActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.activities.AlarmDialogActivity"
+            android:theme="@style/Theme.MyDialog"></activity>
+        <activity android:name=".activity.activities.PhotoZoomInActivity" />
+        <activity android:name=".activity.activities.FullSNSActivity" />
+        <activity
+            android:name=".activity.activities.MainSNSActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".activity.activities.ReviseBoardActivity" />
+        <activity android:name=".activity.activities.FullBoardActivity" />
+        <activity android:name=".activity.activities.WriteBoardActivity" />
+        <activity android:name=".activity.activities.MainBoardActivity" />
+        <activity android:name=".activity.activities.ChatRoomActivity" />
+        <activity android:name=".activity.activities.FriendProfileActivity" />
+        <activity android:name=".activity.activities.FriendReceiveActivity" />
+        <activity android:name=".activity.activities.MainActivity" />
+        <activity android:name=".activity.activities.ProfileActivity" />
+        <activity android:name=".activity.activities.SignUpActivity" />
+        <activity
+            android:name=".activity.activities.LoginActivity"
+            android:theme="@style/NoActionBar"></activity>
+
+        <service
+            android:name=".activity.services.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.activities.AddFriendDialogActivity"
+            android:theme="@style/Theme.MyDialog" /> <!-- 사진관련 -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.mtjinse.myapplication.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>
