@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -90,6 +91,7 @@ public class ProfileActivity extends AppCompatActivity {
     private String mCurrentPhotoPath; //카메라로 찍은 사진 저장할 루트경로
     private String mChatAlarmOn = "true";
     private String mBoardAlarmOn = "true";
+    private long mLastClickTime = 0;
     //RequestCode
     final static int PICK_IMAGE = 1; //갤러리에서 사진선택
     final static int CAPTURE_IMAGE = 2;  //카메라로찍은 사진선택
@@ -159,6 +161,12 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void saveProfileToDB() {
+        //중복클릭방지
+        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+            return;
+        }
+        mLastClickTime = SystemClock.elapsedRealtime();
+
         mProfileNickName = mNickNameEditText.getText().toString().trim();
         mProfileIntroduce = mIntroduceEditText.getText().toString().trim();
         if (!mProfileNickName.matches("[0-9|a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힝]*")) {
