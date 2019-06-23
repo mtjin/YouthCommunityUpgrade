@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
-
+apply plugin: 'io.fabric'
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -62,5 +62,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     //okHttp
     implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+    //파이어베이스 크래쉬틱스
+    implementation('com.crashlytics.sdk.android:crashlytics:2.7.0-SNAPSHOT@aar') {
+        transitive = true;
+    }
 }
-apply plugin: 'com.google.gms.google-services'

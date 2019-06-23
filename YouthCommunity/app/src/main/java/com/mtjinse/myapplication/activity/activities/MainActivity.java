@@ -14,12 +14,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mtjinse.myapplication.R;
 import com.mtjinse.myapplication.activity.fragments.Tab0Fragment;
 import com.mtjinse.myapplication.activity.fragments.Tab1Fragment;
 import com.mtjinse.myapplication.activity.fragments.Tab2Fragment;
 import com.mtjinse.myapplication.activity.fragments.Tab3Fragment;
+
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
     //xml
@@ -42,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //파이어베이스 크래쉬틱스 초기화
+        Fabric.with(this, new Crashlytics());
 
         mViewPager = findViewById(R.id.main_viewpager);
         mTab1Button = findViewById(R.id.main_ibtn_first);
