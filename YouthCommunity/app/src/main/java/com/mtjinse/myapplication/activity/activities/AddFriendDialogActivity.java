@@ -67,7 +67,7 @@ public class AddFriendDialogActivity extends AppCompatActivity { //친구추가�
         //다이얼로그 객체 생성
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //속성 지정
-        builder.setTitle("안내");
+        builder.setTitle("친구신청");
         builder.setMessage(mFindName + " 님께 친구신청 하시겠씁니까?");
         //아이콘
         builder.setIcon(android.R.drawable.ic_dialog_alert);

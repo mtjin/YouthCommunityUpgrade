@@ -69,6 +69,7 @@ public class OpenChatRoomActivity extends AppCompatActivity {
     private OpenChatMessageAdapter mOpenChatMessageAdapter;
     private String mMessage = "";
     private String mChatRoomName = "";
+    private Date mEnterTime; //내가 방에들어온시간
     Animation animClickSend; //댓글전송 버튼 클릭시 애니메이션
     ValueEventListener valueEventListener; //메세지
     ValueEventListener valueEventListener2; //총인원수
@@ -91,6 +92,16 @@ public class OpenChatRoomActivity extends AppCompatActivity {
         loadProfileSharedPreferences();
         animClickSend = AnimationUtils
                 .loadAnimation(this, R.anim.send_scale); //댓글전송애니메이션
+
+        //내가 방에 들어온시간 설정 (그 이후 시간대 메세지만 보여주기위해서)
+        Calendar time2 = Calendar.getInstance(Locale.KOREA);
+        String dates = format1.format(time2.getTime());
+        mEnterTime = null;
+        try {
+            mEnterTime = format1.parse(dates);// 내가방에 들어온시간
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         mOpenChatMessageArrayList = new ArrayList<>();
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false); //레이아웃매니저 생성
@@ -121,45 +132,40 @@ public class OpenChatRoomActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Calendar time2 = Calendar.getInstance(Locale.KOREA);
-        String dates = format1.format(time2.getTime());
-        Date enterTime = null;
         try {
-            enterTime = format1.parse(dates);
-        ; // 내가방에 들어온시간
-        //메세지 감지
-            Date finalEnterTime = enterTime;
+            //메세지 감지
+            Date finalEnterTime = mEnterTime; //내가들어온시간
             valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mOpenChatMessageArrayList.clear(); // 안해주면 데이터가 쌓임(중복
-                mOpenChatMessageAdapter.notifyDataSetChanged();
-                for (DataSnapshot dataSnapshot3 : dataSnapshot.getChildren()) {
-                    ChatMessage chatMessage = dataSnapshot3.getValue(ChatMessage.class);
-                    try {
-                        Date date = format1.parse(chatMessage.getDates());
-                        if(finalEnterTime.getTime() <= date.getTime()){ //내가 방에 들어온 이후 것 만 보여줌
-                            chatMessage.setMessageUid(dataSnapshot3.getKey());
-                            chatMessage.setChatRoomUid(mChatRoomName);
-                            Log.d(TAG, "챗룸에서 사진전송한 파일 : " + chatMessage.getSendImage());
-                            mOpenChatMessageArrayList.add(chatMessage);
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    mOpenChatMessageArrayList.clear(); // 안해주면 데이터가 쌓임(중복
+                    mOpenChatMessageAdapter.notifyDataSetChanged();
+                    for (DataSnapshot dataSnapshot3 : dataSnapshot.getChildren()) {
+                        ChatMessage chatMessage = dataSnapshot3.getValue(ChatMessage.class);
+                        try {
+                            Date date = format1.parse(chatMessage.getDates());
+                            if (finalEnterTime.getTime() <= date.getTime()) { //내가 방에 들어온 이후 것 만 보여줌
+                                chatMessage.setMessageUid(dataSnapshot3.getKey());
+                                chatMessage.setChatRoomUid(mChatRoomName);
+                                Log.d(TAG, "챗룸에서 사진전송한 파일 : " + chatMessage.getSendImage());
+                                mOpenChatMessageArrayList.add(chatMessage);
+                            }
+
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                            Log.d(TAG, "DATE 에러");
                         }
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                        Log.d(TAG , "DATE 에러");
                     }
+                    mOpenChatMessageAdapter.notifyDataSetChanged();
+                    mMessagesRecyclerView.scrollToPosition(mOpenChatMessageArrayList.size() - 1);
                 }
-                mOpenChatMessageAdapter.notifyDataSetChanged();
-                mMessagesRecyclerView.scrollToPosition(mOpenChatMessageArrayList.size() - 1);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        };
-        } catch (ParseException e) {
+                }
+            };
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -208,11 +214,11 @@ public class OpenChatRoomActivity extends AppCompatActivity {
         mRootDatabaseReference.child("Board").child("OpenChatRoom").child(mChatRoomName).addListenerForSingleValueEvent(new ValueEventListener() { //이거안해주면 데이터없는데 addValueEventListener 해주면면 npe뜬다.
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChild("Message")){ // 이 카톡방의 첫 메세지가 아닌경우
+                if (dataSnapshot.hasChild("Message")) { // 이 카톡방의 첫 메세지가 아닌경우
                     mRootDatabaseReference.child("Board").child("OpenChatRoom").child(mChatRoomName).child("Message").addValueEventListener(valueEventListener);
                     mRootDatabaseReference.child("Board").child("OpenChatRoom").child(mChatRoomName).child("TotalPeople").child(mProfileUid).setValue(mProfileUid);
                     mRootDatabaseReference.child("Board").child("OpenChatRoom").child(mChatRoomName).child("TotalPeople").addValueEventListener(valueEventListener2);
-                }else{ //카톡방에 대화가 한개도없는 경우
+                } else { //카톡방에 대화가 한개도없는 경우
                     Calendar time = Calendar.getInstance(Locale.KOREA);
                     String dates = format1.format(time.getTime());
                     ChatMessage chatMessage = new ChatMessage("운영자UID", "운영자", "basic", "즐거운 대화나누세요 !!", dates, "basic");
@@ -273,9 +279,6 @@ public class OpenChatRoomActivity extends AppCompatActivity {
             mProfileImage = pref.getString("proImage", "");
         }
     }
-
-
-
 
 
 }
