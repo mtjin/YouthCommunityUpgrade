@@ -18,7 +18,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,7 +53,7 @@ public class FullBoardActivity extends AppCompatActivity {
     private TextView mDateTextView;
     private ImageView mUploadImageView;
     private TextView mContentTextView;
-    private ImageButton mRecommendImageButton;
+    private ImageView mRecommendImageView;
     private TextView mRecommentSumTextVIew;
     private RecyclerView mCommentRecyclerView;
     private EditText mCommentEditText;
@@ -95,7 +94,7 @@ public class FullBoardActivity extends AppCompatActivity {
         mDateTextView = findViewById(R.id.fullboard_tv_date);
         mUploadImageView = findViewById(R.id.fullboard_iv_uploadimage);
         mContentTextView = findViewById(R.id.fullboard_tv_content);
-        mRecommendImageButton = findViewById(R.id.fullboard_ibtn_recommendup);
+        mRecommendImageView = findViewById(R.id.fullboard_iv_recommendup);
         mRecommentSumTextVIew = findViewById(R.id.fullboard_tv_recommend);
         mCommentRecyclerView = findViewById(R.id.fullboard_rev_comment);
         mCommentEditText = findViewById(R.id.fullboard_pt_inputcomment);
@@ -146,7 +145,7 @@ public class FullBoardActivity extends AppCompatActivity {
             }
         });
         //추천이벤트
-        mRecommendImageButton.setOnClickListener(new View.OnClickListener() {
+        mRecommendImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 recommend();
@@ -327,7 +326,7 @@ public class FullBoardActivity extends AppCompatActivity {
                                         mRootDatabaseReference.child("Board").child(mBoardName).child(mBoardUid).child("recommend").setValue(recommend + 1);
                                         mRootDatabaseReference.child("Board").child(mBoardName).child(mBoardUid).child("RecommendList").child(mProfileUid).setValue(mProfileUid);
                                         mRecommentSumTextVIew.setText(recommend + 1 + "");
-                                        mRecommendImageButton.startAnimation(animRecoomend);
+                                        mRecommendImageView.startAnimation(animRecoomend);
                                     }
                                 }
 

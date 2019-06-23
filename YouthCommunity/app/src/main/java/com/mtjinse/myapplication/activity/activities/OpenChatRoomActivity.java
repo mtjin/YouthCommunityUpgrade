@@ -49,7 +49,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.UUID;
 
 public class OpenChatRoomActivity extends AppCompatActivity {
@@ -119,7 +121,7 @@ public class OpenChatRoomActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Calendar time2 = Calendar.getInstance();
+        Calendar time2 = Calendar.getInstance(Locale.KOREA);
         String dates = format1.format(time2.getTime());
         Date enterTime = null;
         try {
@@ -165,7 +167,7 @@ public class OpenChatRoomActivity extends AppCompatActivity {
         valueEventListener2 = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mTotalPeopleTextView.setText(dataSnapshot.getChildrenCount() + "");
+                mTotalPeopleTextView.setText(dataSnapshot.getChildrenCount() + "명");
             }
 
             @Override
@@ -211,7 +213,7 @@ public class OpenChatRoomActivity extends AppCompatActivity {
                     mRootDatabaseReference.child("Board").child("OpenChatRoom").child(mChatRoomName).child("TotalPeople").child(mProfileUid).setValue(mProfileUid);
                     mRootDatabaseReference.child("Board").child("OpenChatRoom").child(mChatRoomName).child("TotalPeople").addValueEventListener(valueEventListener2);
                 }else{ //카톡방에 대화가 한개도없는 경우
-                    Calendar time = Calendar.getInstance();
+                    Calendar time = Calendar.getInstance(Locale.KOREA);
                     String dates = format1.format(time.getTime());
                     ChatMessage chatMessage = new ChatMessage("운영자UID", "운영자", "basic", "즐거운 대화나누세요 !!", dates, "basic");
                     mRootDatabaseReference.child("Board").child("OpenChatRoom").child(mChatRoomName).child("Message").push().setValue(chatMessage);
@@ -241,8 +243,10 @@ public class OpenChatRoomActivity extends AppCompatActivity {
             mRootDatabaseReference.child("ChatRoom").addListenerForSingleValueEvent(new ValueEventListener() { //친구가삭제한 경우는 메세지를 보내면안됨(친구삭제한경우 채팅방도 폭파됨). 채팅방이 존재하는지 확인
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Calendar time = Calendar.getInstance();
+                    //나라나 개인 설정시간이 다르면 같은시간대에 있어도 현재보내고있는 채팅을 볼 수 없으므로 한국으로 통일시켜서 저장해준다.
+                    Calendar time = Calendar.getInstance(Locale.KOREA);
                     String dates = format1.format(time.getTime());
+
                     ChatMessage chatMessage = new ChatMessage(mProfileUid, mProfileNickName, mProfileImage, mMessage, dates, "basic");
                     mRootDatabaseReference.child("Board").child("OpenChatRoom").child(mChatRoomName).child("Message").push().setValue(chatMessage);
 

@@ -86,15 +86,13 @@
             android:autoLink="all"
             android:textColor="@color/black" />
 
-        <ImageButton
-            android:id="@+id/fullboard_ibtn_recommendup"
+        <ImageView
+            android:id="@+id/fullboard_iv_recommendup"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:background="@color/white"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_recommend" />
+            android:src="@drawable/ic_recommend_board_black_24dp" />
 
         <TextView
             android:id="@+id/fullboard_tv_recommend"
@@ -103,6 +101,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="0"
+            android:textColor="@color/black"
             android:textSize="30dp" />
 
         <LinearLayout
