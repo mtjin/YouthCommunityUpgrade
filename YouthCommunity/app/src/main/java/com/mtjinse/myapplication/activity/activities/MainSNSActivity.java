@@ -73,6 +73,7 @@ public class MainSNSActivity extends AppCompatActivity implements SwipeRefreshLa
         mSNSRecyclerView.setLayoutManager(layoutManager2); ////만든 레이아웃매니저 객체를(설정을) 리사이클러 뷰에 설정해줌
         //어댑터를 연결시켜준다.
         mSNSMessageAdapter = new SNSMessageAdapter(mSNSMessageArrayList, getApplicationContext(), MainSNSActivity.this);
+        mSNSMessageAdapter.setHasStableIds(true); //깜빡임현상 제거
         mSNSRecyclerView.setAdapter(mSNSMessageAdapter);
 
         mFab.setOnClickListener(this);
@@ -120,6 +121,7 @@ public class MainSNSActivity extends AppCompatActivity implements SwipeRefreshLa
 
     //리사이클러뷰에 담을 데이터 불러오기
     private void loadBoardFromDB() {
+
         mRootDatabaseReference.child("Board").child("SNS").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -152,6 +154,12 @@ public class MainSNSActivity extends AppCompatActivity implements SwipeRefreshLa
 
     //내가 좋아요 누른 글만 불러오기
     private void loadMyLikeBoardFromDB(){
+        //데이터겹침 현상 제거하기위해 다시 생성해줌
+        mSNSMessageArrayList = new ArrayList<>();
+        mSNSMessageAdapter = new SNSMessageAdapter(mSNSMessageArrayList, getApplicationContext(), MainSNSActivity.this);
+        mSNSMessageAdapter.setHasStableIds(true); //깜빡임현상 제거
+        mSNSRecyclerView.setAdapter(mSNSMessageAdapter);
+
         mRootDatabaseReference.child("Board").child("SNS").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -186,6 +194,12 @@ public class MainSNSActivity extends AppCompatActivity implements SwipeRefreshLa
 
     //추천수 10개 이상인 BEST 게시물만 불러오기
     private void loadBestBoardFromDB(){
+        //데이터겹침 현상 제거하기위해 다시 생성해줌
+        mSNSMessageArrayList = new ArrayList<>();
+        mSNSMessageAdapter = new SNSMessageAdapter(mSNSMessageArrayList, getApplicationContext(), MainSNSActivity.this);
+        mSNSMessageAdapter.setHasStableIds(true); //깜빡임현상 제거
+        mSNSRecyclerView.setAdapter(mSNSMessageAdapter);
+
         mRootDatabaseReference.child("Board").child("SNS").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -222,6 +236,12 @@ public class MainSNSActivity extends AppCompatActivity implements SwipeRefreshLa
 
     //글 검색
     private void search() {
+        //데이터겹침 현상 제거하기위해 다시 생성해줌
+        mSNSMessageArrayList = new ArrayList<>();
+        mSNSMessageAdapter = new SNSMessageAdapter(mSNSMessageArrayList, getApplicationContext(), MainSNSActivity.this);
+        mSNSMessageAdapter.setHasStableIds(true); //깜빡임현상 제거
+        mSNSRecyclerView.setAdapter(mSNSMessageAdapter);
+
         final String searchWord = mSearchEditText.getText().toString().toLowerCase().trim();
         if (searchWord.length() < 2) {
             Toast.makeText(this, "두글자 이상 입력해야합니다", Toast.LENGTH_SHORT).show();
@@ -258,6 +278,11 @@ public class MainSNSActivity extends AppCompatActivity implements SwipeRefreshLa
 
     @Override
     public void onRefresh() {
+        //데이터겹침 현상 제거하기위해 다시 생성해줌
+        mSNSMessageArrayList = new ArrayList<>();
+        mSNSMessageAdapter = new SNSMessageAdapter(mSNSMessageArrayList, getApplicationContext(), MainSNSActivity.this);
+        mSNSMessageAdapter.setHasStableIds(true); //깜빡임현상 제거
+        mSNSRecyclerView.setAdapter(mSNSMessageAdapter);
         loadBoardFromDB();
     }
 

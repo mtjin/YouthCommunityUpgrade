@@ -83,6 +83,7 @@ public class MainBoardActivity extends AppCompatActivity implements SwipeRefresh
         mBoardRecyclerView.setLayoutManager(layoutManager2); ////만든 레이아웃매니저 객체를(설정을) 리사이클러 뷰에 설정해줌
         //어댑터를 연결시켜준다.
         mBoardMessageAdapter = new BoardMessageAdapter(mBoardMessageArrayList, getApplicationContext());
+        mBoardMessageAdapter.setHasStableIds(true);
         mBoardRecyclerView.setAdapter(mBoardMessageAdapter);
 
         //키보드 완료버튼누를시 검색
@@ -132,7 +133,7 @@ public class MainBoardActivity extends AppCompatActivity implements SwipeRefresh
                     mBoardMessageArrayList.add(boardMessage);
                 }
                 mBoardMessageAdapter.notifyDataSetChanged();
-                mBoardRecyclerView.scrollToPosition(mBoardMessageArrayList.size()-1); //스크롤 가장 위로 해준다.
+                mBoardRecyclerView.scrollToPosition(mBoardMessageArrayList.size() - 1); //스크롤 가장 위로 해준다.
                 mSwipeRefreshLayout.setRefreshing(false);// refresh
             }
 
@@ -145,20 +146,26 @@ public class MainBoardActivity extends AppCompatActivity implements SwipeRefresh
 
     //내가 추천한 게시글 불러오기
     private void loadMyLikeBoardFromDB() {
+        //겹침현상 제거위해 재생성해줌
+        mBoardMessageArrayList = new ArrayList<>();
+        mBoardMessageAdapter = new BoardMessageAdapter(mBoardMessageArrayList, getApplicationContext());
+        mBoardMessageAdapter.setHasStableIds(true);
+        mBoardRecyclerView.setAdapter(mBoardMessageAdapter);
+
         mRootDatabaseReference.child("Board").child(mBoardName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mBoardMessageArrayList.clear();
                 for (DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()) {
-                    if(dataSnapshot2.child("Recommend").hasChild(mProfileUid)) { //내가추천한글 불러오기기
-                       BoardMessage boardMessage = dataSnapshot2.getValue(BoardMessage.class);
+                    if (dataSnapshot2.child("Recommend").hasChild(mProfileUid)) { //내가추천한글 불러오기기
+                        BoardMessage boardMessage = dataSnapshot2.getValue(BoardMessage.class);
                         boardMessage.setBoardUid(dataSnapshot2.getKey()); //게시글 uid 넣어줘서 삽입
                         boardMessage.setBoardName(mBoardName); //게시글 이름도 삽입
                         mBoardMessageArrayList.add(boardMessage);
                     }
                 }
                 mBoardMessageAdapter.notifyDataSetChanged();
-                mBoardRecyclerView.scrollToPosition(mBoardMessageArrayList.size()-1); //스크롤 가장 위로 해준다.
+                mBoardRecyclerView.scrollToPosition(mBoardMessageArrayList.size() - 1); //스크롤 가장 위로 해준다.
                 mSwipeRefreshLayout.setRefreshing(false);// refresh
             }
 
@@ -171,12 +178,18 @@ public class MainBoardActivity extends AppCompatActivity implements SwipeRefresh
 
     //추천수 10개이상인 best게시물만 불러오기
     private void loadBestBoardFromDB() {
+        //겹침현상 제거위해 재생성해줌
+        mBoardMessageArrayList = new ArrayList<>();
+        mBoardMessageAdapter = new BoardMessageAdapter(mBoardMessageArrayList, getApplicationContext());
+        mBoardMessageAdapter.setHasStableIds(true);
+        mBoardRecyclerView.setAdapter(mBoardMessageAdapter);
+
         mRootDatabaseReference.child("Board").child(mBoardName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mBoardMessageArrayList.clear();
                 for (DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()) {
-                    if(dataSnapshot2.child("Recommend").getChildrenCount() >= 10) { //내가추천한글 불러오기기
+                    if (dataSnapshot2.child("Recommend").getChildrenCount() >= 10) { //내가추천한글 불러오기기
                         BoardMessage boardMessage = dataSnapshot2.getValue(BoardMessage.class);
                         boardMessage.setBoardUid(dataSnapshot2.getKey()); //게시글 uid 넣어줘서 삽입
                         boardMessage.setBoardName(mBoardName); //게시글 이름도 삽입
@@ -184,7 +197,7 @@ public class MainBoardActivity extends AppCompatActivity implements SwipeRefresh
                     }
                 }
                 mBoardMessageAdapter.notifyDataSetChanged();
-                mBoardRecyclerView.scrollToPosition(mBoardMessageArrayList.size()-1); //스크롤 가장 위로 해준다.
+                mBoardRecyclerView.scrollToPosition(mBoardMessageArrayList.size() - 1); //스크롤 가장 위로 해준다.
                 mSwipeRefreshLayout.setRefreshing(false);// refresh
             }
 
@@ -197,6 +210,12 @@ public class MainBoardActivity extends AppCompatActivity implements SwipeRefresh
 
     //글 검색
     private void search() {
+        //겹침현상 제거위해 재생성해줌
+        mBoardMessageArrayList = new ArrayList<>();
+        mBoardMessageAdapter = new BoardMessageAdapter(mBoardMessageArrayList, getApplicationContext());
+        mBoardMessageAdapter.setHasStableIds(true);
+        mBoardRecyclerView.setAdapter(mBoardMessageAdapter);
+
         final String searchWord = mSearchEditText.getText().toString().toLowerCase().trim();
         if (searchWord.length() < 2) {
             Toast.makeText(this, "두글자 이상 입력해야합니다", Toast.LENGTH_SHORT).show();
@@ -211,14 +230,14 @@ public class MainBoardActivity extends AppCompatActivity implements SwipeRefresh
                         String title = boardMessage.getTitle().toLowerCase().trim();
                         String message = boardMessage.getMessage().toLowerCase().trim();
                         String nickName = boardMessage.getNickName().toLowerCase().trim();
-                        if (title.contains(searchWord) ||  message.contains(searchWord) || nickName.contains(searchWord)){
+                        if (title.contains(searchWord) || message.contains(searchWord) || nickName.contains(searchWord)) {
                             boardMessage.setBoardUid(dataSnapshot2.getKey()); //게시글 uid 넣어줘서 삽입
                             boardMessage.setBoardName(mBoardName); //게시글 이름도 삽입
                             mBoardMessageArrayList.add(boardMessage);
                         }
                     }
                     mBoardMessageAdapter.notifyDataSetChanged();
-                    mBoardRecyclerView.scrollToPosition(mBoardMessageArrayList.size()-1); //스크롤 가장 위로 해준다.
+                    mBoardRecyclerView.scrollToPosition(mBoardMessageArrayList.size() - 1); //스크롤 가장 위로 해준다.
                 }
 
                 @Override
@@ -231,6 +250,11 @@ public class MainBoardActivity extends AppCompatActivity implements SwipeRefresh
 
     @Override
     public void onRefresh() {
+        //겹침현상 제거위해 재생성해줌
+        mBoardMessageArrayList = new ArrayList<>();
+        mBoardMessageAdapter = new BoardMessageAdapter(mBoardMessageArrayList, getApplicationContext());
+        mBoardMessageAdapter.setHasStableIds(true);
+        mBoardRecyclerView.setAdapter(mBoardMessageAdapter);
         loadBoardFromDB();
     }
 
