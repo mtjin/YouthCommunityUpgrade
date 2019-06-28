@@ -24,7 +24,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/login_input"
+        android:background="@drawable/text_input"
         android:hint="닉네임"
         android:inputType="text"
         android:maxLines="1"
@@ -39,7 +39,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/login_input"
+        android:background="@drawable/text_input"
         android:hint="자기소개(100자 이내)"
         android:lines="4"
         android:autoLink="all"
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/login_input"
+        android:background="@drawable/text_input"
         android:autofillHints="나이를 선택해주세요"
         android:layout_marginRight="30dp" />
     <Button
